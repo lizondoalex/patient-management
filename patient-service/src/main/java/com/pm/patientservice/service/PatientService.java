@@ -42,12 +42,16 @@ public class PatientService {
 
    public PatientResponseDTO updatePatient(UUID id, PatientRequestDTO patientRequestDTO){
        Optional<Patient> optionalPatient = patientRepository.findById(id);
+
        if(optionalPatient.isPresent()){
+           Patient patient = optionalPatient.get();
 
            if(patientRepository.existsByEmail(patientRequestDTO.getEmail())){
-               throw new EmailAlreadyExistsException("A patient with this email already exists " + patientRequestDTO.getEmail());
+               if(!patientRequestDTO.getEmail().equals(patient.getEmail())){
+                   throw new EmailAlreadyExistsException("A patient with this email already exists " + patientRequestDTO.getEmail());
+               }
            }
-           Patient patient = optionalPatient.get();
+
            patient.setName(patientRequestDTO.getName());
            patient.setAddress(patientRequestDTO.getAddress());
            patient.setEmail(patientRequestDTO.getEmail());

@@ -5,9 +5,10 @@ Content-Type: application/json
 
 {
   "name": "Example Name",
-  "email": "test@example.com",
+  "email": "john.doe@example.com",
   "address": "123 main street",
   "dateOfBirth": "1995-10-10"
 }
+
 
 ###
