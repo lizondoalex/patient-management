@@ -11,6 +11,7 @@ docker run -d \
   --network internal \
   -p 4001:4001 \
   -p 9001:9001 \
-  billing-service
+  billing-service:latest
 
 echo "End of run-billing-service.sh"
+
