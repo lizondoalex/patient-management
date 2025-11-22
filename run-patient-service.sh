@@ -16,6 +16,7 @@ docker run -d \
   -e BILLING_SERVICE_GRPC_PORT=9001 \
   -e SPRING_JPA_HIBERNATE_DLL_AUTO=update \
   -e SPRING_SQL_INIT_MODE=always \
+  -e SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092 \
   patient-service
 
 echo "End of run-patient-service.sh"
