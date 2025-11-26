@@ -12,4 +12,4 @@ docker run -d \
   -e POSTGRES_USER=admin_user \
   postgres:latest
 
-echo "End of run-db.sh"
+echo "End of run-patient-service-db.sh"
