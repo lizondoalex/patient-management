@@ -1,0 +1,6 @@
+### GET all patients
+
+    GET http://localhost:4004/api/members
+Authorization: Bearer {{token}}
+
+###

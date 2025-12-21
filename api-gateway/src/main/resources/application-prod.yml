@@ -12,20 +12,20 @@ spring:
           filters:
             - StripPrefix=1
 
-        - id: patient-service-route
+        - id: member-service-route
           uri: http://host.docker.internal:4000
           predicates:
-            - Path=/api/patients/**
+            - Path=/api/members/**
           filters:
             - StripPrefix=1
             - JwtValidation
 
-        - id: api-docs-patient-route
+        - id: api-docs-member-route
           uri: http://host.docker.internal:4000
           predicates:
-            - Path=/api-docs/patients
+            - Path=/api-docs/members
           filters:
-            - RewritePath=/api-docs/patients, /v3/api-docs
+            - RewritePath=/api-docs/members, /v3/api-docs
 
         - id: api-docs-auth-route
           uri: http://host.docker.internal:4005
