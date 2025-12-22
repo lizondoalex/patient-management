@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/members")
-@Tag(name = "Member", description = "API for managing patients")
+@Tag(name = "Member", description = "API for managing members")
 public class MemberController {
     private final MemberService memberService;
 
@@ -25,32 +25,32 @@ public class MemberController {
     }
 
     @GetMapping
-    @Operation(summary = "Get patients")
-    public ResponseEntity<List<MemberResponseDTO>> getPatients(){
-        List<MemberResponseDTO> responsePatients = memberService.getPatients();
+    @Operation(summary = "Get members")
+    public ResponseEntity<List<MemberResponseDTO>> getMembers(){
+        List<MemberResponseDTO> responseMembers= memberService.getMembers();
 
-        return ResponseEntity.ok().body(responsePatients);
+        return ResponseEntity.ok().body(responseMembers);
     }
 
     @PostMapping
-    @Operation(summary = "Create a new patient")
-    public ResponseEntity<MemberResponseDTO> createPatient(@Validated({Default.class, CreateMemberValidationGroup.class}) @RequestBody MemberRequestDTO memberRequestDTO){
-        MemberResponseDTO memberResponseDTO = memberService.createPatient(memberRequestDTO);
+    @Operation(summary = "Create a new member")
+    public ResponseEntity<MemberResponseDTO> createMember(@Validated({Default.class, CreateMemberValidationGroup.class}) @RequestBody MemberRequestDTO memberRequestDTO){
+        MemberResponseDTO memberResponseDTO = memberService.createMember(memberRequestDTO);
 
         return ResponseEntity.ok().body(memberResponseDTO);
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Update a patient")
-    public ResponseEntity<MemberResponseDTO> updatePatient(@PathVariable UUID id, @Validated({Default.class})@RequestBody MemberRequestDTO memberRequestDTO){
-        MemberResponseDTO memberResponseDTO = memberService.updatePatient(id , memberRequestDTO);
+    @Operation(summary = "Update a member")
+    public ResponseEntity<MemberResponseDTO> createMember(@PathVariable UUID id, @Validated({Default.class})@RequestBody MemberRequestDTO memberRequestDTO){
+        MemberResponseDTO memberResponseDTO = memberService.updateMember(id , memberRequestDTO);
 
         return ResponseEntity.ok().body(memberResponseDTO);
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Delete a patient")
-    public ResponseEntity<MemberResponseDTO> deletePatient(@PathVariable UUID id){
+    @Operation(summary = "Delete a member")
+    public ResponseEntity<MemberResponseDTO> deleteMember(@PathVariable UUID id){
         MemberResponseDTO memberResponseDTO = memberService.deleteMember(id);
 
         return ResponseEntity.ok().body(memberResponseDTO);

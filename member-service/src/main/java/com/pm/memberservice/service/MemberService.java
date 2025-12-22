@@ -30,14 +30,14 @@ public class MemberService {
         this.kafkaProducer = kafkaProducer;
     }
 
-   public List<MemberResponseDTO> getPatients(){
+   public List<MemberResponseDTO> getMembers(){
        List<Member> members = memberRepository.findAll();
 
        return members.stream()
                .map(MemberMapper::toDTO).toList();
    }
 
-   public MemberResponseDTO createPatient(MemberRequestDTO memberRequestDTO){
+   public MemberResponseDTO createMember(MemberRequestDTO memberRequestDTO){
        if(memberRepository.existsByEmail(memberRequestDTO.getEmail())){
            throw new EmailAlreadyExistsException("A member with this email already exists " + memberRequestDTO.getEmail());
        }
@@ -49,11 +49,11 @@ public class MemberService {
        return MemberMapper.toDTO(newMember);
    }
 
-   public MemberResponseDTO updatePatient(UUID id, MemberRequestDTO memberRequestDTO){
-       Optional<Member> optionalPatient = memberRepository.findById(id);
+   public MemberResponseDTO updateMember(UUID id, MemberRequestDTO memberRequestDTO){
+       Optional<Member> optionalMember = memberRepository.findById(id);
 
-       if(optionalPatient.isPresent()){
-           Member member = optionalPatient.get();
+       if(optionalMember.isPresent()){
+           Member member = optionalMember.get();
 
            if(memberRepository.existsByEmail(memberRequestDTO.getEmail())){
                if(!memberRequestDTO.getEmail().equals(member.getEmail())){

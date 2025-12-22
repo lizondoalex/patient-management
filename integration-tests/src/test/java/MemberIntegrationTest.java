@@ -1,12 +1,11 @@
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class PatientIntegrationTest {
+public class MemberIntegrationTest {
 
     @BeforeAll
     static void setUp(){
@@ -14,7 +13,7 @@ public class PatientIntegrationTest {
     }
 
     @Test
-    public void shouldReturnPatientsWithValidToken(){
+    public void shouldReturnMembersWithValidToken(){
         String loginPayload = """
                     {
                         "email" : "testuser@test.com",
@@ -36,9 +35,9 @@ public class PatientIntegrationTest {
         given()
                 .header("Authorization", "Bearer " + token)
                 .when()
-                .get("/api/patients")
+                .get("/api/members")
                 .then()
                 .statusCode(200)
-                .body("patients", notNullValue());
+                .body("members", notNullValue());
     }
 }

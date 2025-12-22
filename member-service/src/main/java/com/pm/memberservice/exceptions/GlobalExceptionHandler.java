@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MemberNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handlePatientNotFoundException(MemberNotFoundException ex){
+    public ResponseEntity<Map<String, String>> handleMemberNotFoundException(MemberNotFoundException ex){
 
         log.warn("Member not found {}" , ex.getMessage());
 
