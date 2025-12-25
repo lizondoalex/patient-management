@@ -10,6 +10,16 @@ import java.util.UUID;
 @Entity
 public class Member {
 
+    public Member(){}
+
+    public Member(String name, String email, String address, LocalDate dateOfBirth, LocalDate registerDate) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.dateOfBirth = dateOfBirth;
+        this.registerDate = registerDate;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;

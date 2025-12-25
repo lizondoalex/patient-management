@@ -7,6 +7,16 @@ import jakarta.validation.constraints.Size;
 
 public class MemberRequestDTO {
 
+    public MemberRequestDTO(){}
+
+    public MemberRequestDTO(String email, String registerDate, String dateOfBirth, String address, String name) {
+        this.email = email;
+        this.registerDate = registerDate;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.name = name;
+    }
+
     @NotBlank(message = "Name is required")
     @Size(max = 1000, message = "Name cannot exceed 100 characters")
     private String name;
